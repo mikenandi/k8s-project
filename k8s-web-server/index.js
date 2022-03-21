@@ -17,8 +17,9 @@ app.get("/nginx", async (req, res) => {
 		const url = "http://nginx";
 		const url1 = "https://gorest.co.in/public/v2/posts";
 		const response = await axios.get(url);
-		const body = await response.text();
-		res.status(200).send(body);
+		const body = await response.json();
+		console.log(response);
+		res.status(200).send(response.statusText);
 	} catch (err) {
 		console.log(err.message);
 	}

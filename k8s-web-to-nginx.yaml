@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: k8s-web-hello
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: k8s-web-hello
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: k8s-web-hello
-          image: mikenandi/k8s-web-server:latest
+          image: mikenandi/k8s-web-server:5.0.0
           resources:
             limits:
               memory: "128Mi"
