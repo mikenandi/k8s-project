@@ -1,5 +1,6 @@
 const express = require("express");
 const os = require("os");
+const axios = require("axios");
 
 const app = express();
 
@@ -12,10 +13,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/nginx", async (req, res) => {
-	const url = "http://nginx";
-	const response = await fetch(url);
-	const body = await response.text();
-	res.status(200).send(body);
+	try {
+		const url = "http://nginx";
+		const url1 = "https://gorest.co.in/public/v2/posts";
+		const response = await axios.get(url);
+		const body = await response.text();
+		res.status(200).send(body);
+	} catch (err) {
+		console.log(err.message);
+	}
 });
 
 app.listen(PORT, () => console.log(`the server is running at port: ${PORT}`));
