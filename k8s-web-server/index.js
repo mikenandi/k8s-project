@@ -11,4 +11,11 @@ app.get("/", (req, res) => {
 	res.send(hellomsg);
 });
 
+app.get("/nginx", async (req, res) => {
+	const url = "http://nginx";
+	const response = await fetch(url);
+	const body = await response.text();
+	res.status(200).send(body);
+});
+
 app.listen(PORT, () => console.log(`the server is running at port: ${PORT}`));
